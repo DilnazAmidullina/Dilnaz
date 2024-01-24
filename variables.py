@@ -6,3 +6,8 @@ print(x)
 print(y)
 
 #example
+x = 4
+x = "Sally"
+print(x)
+
+#
