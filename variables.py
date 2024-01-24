@@ -83,3 +83,108 @@
 # print(y)
 # print(z)
 
+
+#output variables
+
+# x = "Python is awesome"
+# print(x)
+
+#example
+# x = "Python"
+# y = "is"
+# z = "awesome"
+# print(x, y, z)
+
+#example
+# x = "Python "
+# y = "is "
+# z = "awesome"
+# print(x + y + z)
+
+# #example
+# x = 5
+# y = 10
+# print(x + y)
+
+# #error example
+# x = 5
+# y = "John"
+# print(x + y)
+
+# #example
+# x = 5
+# y = "John"
+# print(x, y)
+
+
+#global variables
+
+#example
+# x = "awesome"
+
+# def myfunc():
+#     print("Python is " + x)
+
+# myfunc()
+
+#example
+# x = "awesome"
+
+# def myfunc():
+#     x = "fantastic"
+#     print("Python is " + x)
+
+# myfunc()
+
+# print("Pythos is " + x)
+
+#global keyword
+# def myfunc():
+#     global x
+#     x = "fantastic"
+
+# myfunc()
+
+# print("Python is " + x)
+
+#example
+# x = "awesome"
+
+# def myfunc():
+#     global x
+#     x = "fantastic"
+
+# myfunc()
+
+# print("Python is " + x)
+
+
+#exercise1
+# carname = "Volvo"
+
+# #exercise2
+# x = 50
+
+# #exercise3
+# x = 5
+# y = 10
+# print(x + y)
+
+# #exercise4
+# x = 5
+# y = 10
+# z = x + y
+# print(z)
+
+# #exercise5
+# x, y, z = "Orange", "Banana", "Cherry"
+
+# #exercise5
+# x=y=z = "Orange"
+
+# #exercise5
+# def myfunc():
+#     global x
+#     x = "fantastic"
+
+
