@@ -1,1 +1,1 @@
-print("Hello World")
+print("Dilnaz pochemu ty menya ye slushaesh")
