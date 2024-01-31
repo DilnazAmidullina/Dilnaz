@@ -851,3 +851,11 @@ Decimal numbers and their binary values:
 # fruits = ["apple", "banana", "cherry"]
 # print(len(fruits))
 
+
+
+
+tuple
+
+thistuple = ("apple", "banana", "cherry")
+print(thistuple)
+
