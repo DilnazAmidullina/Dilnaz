@@ -1655,48 +1655,521 @@ Decimal numbers and their binary values:
 
 # print(thisdict)
 
-adding items
+# adding items
 
-thisdict = {
-  "brand": "Ford",
-  "model": "Mustang",
-  "year": 1964
-}
-thisdict["color"] = "red"
-print(thisdict)
-
-
-adding using update
-
-thisdict = {
-  "brand": "Ford",
-  "model": "Mustang",
-  "year": 1964
-}
-thisdict.update({"color": "red"})
+# thisdict = {
+#   "brand": "Ford",
+#   "model": "Mustang",
+#   "year": 1964
+# }
+# thisdict["color"] = "red"
+# print(thisdict)
 
 
-remove items
+# adding using update
 
-pop - removes key
+# thisdict = {
+#   "brand": "Ford",
+#   "model": "Mustang",
+#   "year": 1964
+# }
+# thisdict.update({"color": "red"})
 
-thisdict = {
-  "brand": "Ford",
-  "model": "Mustang",
-  "year": 1964
-}
-thisdict.pop("model")
-print(thisdict)
-{'brand': 'Ford', 'year': 1964}
 
-popitem() - removes the last inserted item (in versions before 3.7, a random item is removed instead):
+# remove items
 
-thisdict = {
-  "brand": "Ford",
-  "model": "Mustang",
-  "year": 1964
-}
-thisdict.popitem()
-print(thisdict)
-{'brand': 'Ford', 'model': 'Mustang'}
+# pop - removes key
+
+# thisdict = {
+#   "brand": "Ford",
+#   "model": "Mustang",
+#   "year": 1964
+# }
+# thisdict.pop("model")
+# print(thisdict)
+# {'brand': 'Ford', 'year': 1964}
+
+# popitem() - removes the last inserted item (in versions before 3.7, a random item is removed instead):
+
+# thisdict = {
+#   "brand": "Ford",
+#   "model": "Mustang",
+#   "year": 1964
+# }
+# thisdict.popitem()
+# print(thisdict)
+# {'brand': 'Ford', 'model': 'Mustang'}
+
+
+# del 
+
+# thisdict = {
+#   "brand": "Ford",
+#   "model": "Mustang",
+#   "year": 1964
+# }
+# del thisdict["model"]
+# print(thisdict)
+
+# del deletes completely
+
+# thisdict =	{
+#   "brand": "Ford",
+#   "model": "Mustang",
+#   "year": 1964
+# }
+# del thisdict
+# print(thisdict) #this will cause an error because "thisdict" no longer exists.
+
+# clear
+
+# thisdict = {
+#   "brand": "Ford",
+#   "model": "Mustang",
+#   "year": 1964
+# }
+# thisdict.clear()
+# print(thisdict)
+
+# {}
+
+
+# loops throught dict
+ 
+#  example
+
+# thisdict =	{
+#   "brand": "Ford",
+#   "model": "Mustang",
+#   "year": 1964
+# }
+# for x in thisdict:
+#   print(x)
+
+# brand
+# model
+# year
+
+# example
+
+# thisdict =	{
+#   "brand": "Ford",
+#   "model": "Mustang",
+#   "year": 1964
+# }
+# for x in thisdict:
+#   print(thisdict[x])
+
+# Ford
+# Mustang
+# 1964
+
+
+# to return dict_values
+
+# thisdict =	{
+#   "brand": "Ford",
+#   "model": "Mustang",
+#   "year": 1964
+# }
+# for x in thisdict.values():
+#   print(x)
+
+
+# to return dict_keys
+
+# thisdict =	{
+#   "brand": "Ford",
+#   "model": "Mustang",
+#   "year": 1964
+# }
+# for x in thisdict.keys():
+#   print(x)
+
+
+# to return both
+
+# thisdict =	{
+#   "brand": "Ford",
+#   "model": "Mustang",
+#   "year": 1964
+# }
+# for x, y in thisdict.items():
+#   print(x, y)
+
+# brand Ford
+# model Mustang
+# year 1964
+
+
+# copy 
+
+
+# copy() 
+
+# thisdict = {
+#   "brand": "Ford",
+#   "model": "Mustang",
+#   "year": 1964
+# }
+# mydict = thisdict.copy()
+# print(mydict)
+
+
+# dict()
+
+# thisdict = {
+#   "brand": "Ford",
+#   "model": "Mustang",
+#   "year": 1964
+# }
+# mydict = dict(thisdict)
+# print(mydict)
+
+
+# nested dictionaries
+
+# myfamily = {
+#   "child1" : {
+#     "name" : "Emil",
+#     "year" : 2004
+#   },
+#   "child2" : {
+#     "name" : "Tobias",
+#     "year" : 2007
+#   },
+#   "child3" : {
+#     "name" : "Linus",
+#     "year" : 2011
+#   }
+# }
+
+# print(myfamily)
+
+# {'child1': {'name': 'Emil', 'year': 2004}, 'child2': {'name': 'Tobias', 'year': 2007}, 'child3': {'name': 'Linus', 'year': 2011}}
+
+
+# add three dict into new 
+
+# child1 = {
+#   "name" : "Emil",
+#   "year" : 2004
+# }
+# child2 = {
+#   "name" : "Tobias",
+#   "year" : 2007
+# }
+# child3 = {
+#   "name" : "Linus",
+#   "year" : 2011
+# }
+
+# myfamily = {
+#   "child1" : child1,
+#   "child2" : child2,
+#   "child3" : child3
+# }
+
+# print(myfamily)
+# {'child1': {'name': 'Emil', 'year': 2004}, 'child2': {'name': 'Tobias', 'year': 2007}, 'child3': {'name': 'Linus', 'year': 2011}}
+
+
+# access
+
+# myfamily = {
+#   "child1" : {
+#     "name" : "Emil",
+#     "year" : 2004
+#   },
+#   "child2" : {
+#     "name" : "Tobias",
+#     "year" : 2007
+#   },
+#   "child3" : {
+#     "name" : "Linus",
+#     "year" : 2011
+#   }
+# }
+
+# print(myfamily["child2"]["name"])
+
+
+# myfamily = {
+#   "child1" : {
+#     "name" : "Emil",
+#     "year" : 2004
+#   },
+#   "child2" : {
+#     "name" : "Tobias",
+#     "year" : 2007
+#   },
+#   "child3" : {
+#     "name" : "Linus",
+#     "year" : 2011
+#   }
+# }
+
+# print(myfamily["child2"]["name"])
+# myfamily = {
+#   "child1" : {
+#     "name" : "Emil",
+#     "year" : 2004
+#   },
+#   "child2" : {
+#     "name" : "Tobias",
+#     "year" : 2007
+#   },
+#   "child3" : {
+#     "name" : "Linus",
+#     "year" : 2011
+#   }
+# }
+
+# print(myfamily["child2"]["name"])
+
+# Tobias
+
+
+# exercise1
+
+# car =	{
+#   "brand": "Ford",
+#   "model": "Mustang",
+#   "year": 1964
+# }
+# print(car.get("model"))
+
+# exercise2
+
+# car =	{
+#   "brand": "Ford",
+#   "model": "Mustang",
+#   "year": 1964
+# }
+# car["year"] = 2020
+
+# exercise3
+
+# car =	{
+#   "brand": "Ford",
+#   "model": "Mustang",
+#   "year": 1964
+# }
+# car["color"] = "red"
+
+# exercise4
+
+# car =	{
+#   "brand": "Ford",
+#   "model": "Mustang",
+#   "year": 1964
+# }
+# car.pop("model")
+
+# exercise5
+
+# car =	{
+#   "brand": "Ford",
+#   "model": "Mustang",
+#   "year": 1964
+# }
+# car.clear()
+
+
+
+
+# IF...else
+
+# if statement
+
+# a = 33
+# b = 200
+
+# if b > a:
+#   print("b is greater than a")
+
+
+#  IndentationError
+
+# a = 33
+# b = 200
+
+# if b > a:
+# print("b is greater than a")
+
+
+# elif (else) - "if the previous conditions were not true, then try this condition".
+
+# a = 33
+# b = 33
+# if b > a:
+#   print("b is greater than a")
+# elif a == b:
+#   print("a and b are equal")
+
+
+# else ( catches anything which isn't caught by the preceding conditions)
+      
+# a = 200
+# b = 33
+# if b > a:
+#   print("b is greater than a")
+# elif a == b:
+#   print("a and b are equal")
+# else:
+#   print("a is greater than b")
+
+
+# example
+
+# a = 200
+# b = 33
+# if b > a:
+#   print("b is greater than a")
+# else:
+#   print("b is not greater than a")
+
+
+# short hand if
+
+# a = 200
+# b = 33
+
+# if a > b: print("a is greater than b")
+
+
+# short hanf if else
+
+# a = 2
+# b = 330
+
+# print("A") if a > b else print("B")
+
+
+# multiple else statements
+
+# a = 330
+# b = 330
+
+# print("A") if a > b else print("=") if a == b else print("B")
+
+
+# and
+
+# a = 200
+# b = 33
+# c = 500
+# if a > b and c > a:
+#   print("Both conditions are True")
+
+
+# or
+
+# a = 200
+# b = 33
+# c = 500
+# if a > b or a > c:
+#   print("At least one of the conditions is True")
+
+
+# not
+
+# a = 33
+# b = 200
+# if not a > b:
+#   print("a is NOT greater than b")
+
+
+# nested if (if inside if)
+
+# x = 41
+
+# if x > 10:
+#   print("Above ten,")
+#   if x > 20:
+#     print("and also above 20!")
+#   else:
+#     print("but not above 20.")
+
+# Above ten,
+# and also above 20!
+
+
+# pass (if statements cannot be empty, but if you for some reason have an if statement with no content)
+
+# a = 33
+# b = 200
+
+# if b > a:
+#   pass
+
+# having an empty if statement like this, would raise an error without the pass statement
+
+
+# exercise1
+
+# a = 50
+# b = 10
+# if a > b:
+#    print("Hello World")
+
+# exercise2
+
+# a = 50
+# b = 10
+# if a != b:
+#    print("Hello World")
+
+# exercise3
+
+# a = 50
+# b = 10
+# if a == b:
+#    print("Yes")
+# else:
+#    print("No")
+
+# exercise4
+
+# a = 50
+# b = 10
+# if a == b:
+#    print("1")
+# elif a > b:
+#    print("2")
+# else:
+#    print("3")
+
+
+# exercise5
+
+# if a == b and c == d:
+#    print("Hello")
+
+# exercise6
+
+# if a == b or c == d:
+#     print("Hello")
+
+# exercise7
+
+# if 5 > 2:
+#     print("YES")
+
+# exercise8
+
+# a = 2
+# b = 5
+# print("YES") if a == b else print("NO")
+
+# exercise9
+
+# a = 2
+# b = 50
+# c = 2
+
+# if a == c or b == c:
+#    print("YES")
+
+
 
