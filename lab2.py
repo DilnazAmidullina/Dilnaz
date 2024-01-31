@@ -771,28 +771,83 @@ Decimal numbers and their binary values:
 # print(mylist)
 
 
-join 
+# join 
 
-example
+# example
 
-list1 = ["a", "b", "c"]
-list2 = [1, 2, 3]
-list3 = list1 + list2
-print(list3)
+# list1 = ["a", "b", "c"]
+# list2 = [1, 2, 3]
+# list3 = list1 + list2
+# print(list3)
 
-2nd method with append (add to the end)
+# 2nd method with append (add to the end)
 
-list1 = ["a", "b" , "c"]
-list2 = [1, 2, 3]
-for x in list2:
-  list1.append(x)
-print(list1)
+# list1 = ["a", "b" , "c"]
+# list2 = [1, 2, 3]
+# for x in list2:
+#   list1.append(x)
+# print(list1)
 
-3rd method with extend (add elements from one list to another list)
+# 3rd method with extend (add elements from one list to another list)
 
-list1 = ["a", "b" , "c"]
-list2 = [1, 2, 3]
-list1.extend(list2)
-print(list1)
+# list1 = ["a", "b" , "c"]
+# list2 = [1, 2, 3]
+# list1.extend(list2)
+# print(list1)
 
+
+# list methods
+
+# count() (Return the number of times the value "cherry" appears in the fruits list:)
+
+# fruits = ['apple', 'banana', 'cherry']
+# x = fruits.count("cherry")
+# print(x)
+
+# example
+
+# points = [1, 4, 2, 9, 7, 8, 9, 3, 1]
+# x = points.count(9)
+# print(x)
+
+
+# exercise1
+
+# fruits = ["apple", "banana", "cherry"]
+# print(fruits[1])
+
+# exercise2
+
+# fruits = ["apple", "banana", "cherry"]
+# fruits[0] = "kiwi"
+
+# exercise3
+
+# fruits = ["apple", "banana", "cherry"]
+# fruits.append("orange")
+
+# exercise4
+
+# fruits = ["apple", "banana", "cherry"]
+# fruits.insert(1, "lemon")
+
+# exercise5
+
+# fruits = ["apple", "banana", "cherry"]
+# fruits.remove("banana")
+
+# exercise6
+
+# fruits = ["apple", "banana", "cherry"]
+# print(fruits[-1])
+
+# exercise7
+
+# fruits = ["apple", "banana", "cherry", "orange", "kiwi", "melon", "mango"]
+# print(fruits[2:5])
+
+# exercise8
+
+# fruits = ["apple", "banana", "cherry"]
+# print(len(fruits))
 
