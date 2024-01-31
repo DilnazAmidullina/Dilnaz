@@ -166,6 +166,110 @@
 # x **=3
 # print(x)
 
+# AND
+# x = 5
+# x &= 3
+# print(x)
+#output 1 
+
+#OR
+# x = 5
+# x |= 3
+# print(x) 
+# outputs 7 
+
+#XOR 
+# x = 5
+# x ^= 3
+# print(x)
+# outputs 6
+
+#number is shifted to the left
+# x = 5
+# x <<= 3
+# print(x)
+
+# number is shifted to the right
+# x = 5
+# x >>= 3
+# print(x)
+
+
+# comparison operators
+
+# equal
+# x = 5
+# y = 3
+# print(x == y)
+
+# not equal
+# x = 5
+# y = 3
+# print(x != y)
+
+# greater than
+# x = 5
+# y = 3
+# print(x > y)
+
+# less than
+# x = 5
+# y = 3
+# print(x < y)
+
+# greater than or equal to
+# x = 5
+# y = 3
+# print(x >= y)
+
+# Less than or equal to
+# x = 5
+# y = 3
+# print(x <= y)
+
+
+# logical operators
+
+# and
+# x = 5
+# print(x > 3 and x < 10)
+# returns True because 5 is greater than 3 AND 5 is less than 10
+
+# or
+# x = 5
+# print(x > 3 or x < 4)
+# returns True because one of the conditions are true (5 is greater than 3, but 5 is not less than 4)
+
+# not
+# x = 5
+# print(not(x > 3 and x < 10))
+# returns False because not is used to reverse the result
+
+
+# identity operators
+
+# is
+# x = ["apple", "banana"]
+# y = ["apple", "banana"]
+# z = x
+
+# print(x is z)
+# print(x is y)
+# print(x == y)
+
+
+# is not
+# x = ["apple", "banana"]
+# y = ["apple", "banana"]
+# z = x
+
+# print(x is not z)
+# print(x is not y)
+# print(x != y)
+
+
+
+
 
 
 
