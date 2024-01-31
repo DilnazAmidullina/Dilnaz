@@ -2173,3 +2173,280 @@ Decimal numbers and their binary values:
 
 
 
+# WHILE loops
+
+# example
+
+# i = 1
+# while i < 6:
+#   print(i)
+#   i += 1
+
+# 1
+# 2
+# 3
+# 4
+# 5
+
+
+# break
+
+# i = 1
+# while i < 6:
+#   print(i)
+#   if (i == 3):
+#     break
+#   i += 1
+
+
+# continue
+
+# i = 0
+# while i < 6:
+#   i += 1
+#   if i == 3:
+#     continue
+#   print(i)
+
+# # Note that number 3 is missing in the result
+
+
+# else
+  
+# i = 1
+# while i < 6:
+#   print(i)
+#   i += 1
+# else:
+#   print("i is no longer less than 6")
+
+# 1
+# 2
+# 3
+# 4
+# 5
+# i is no longer less than 6
+
+
+# exercise1
+
+# i = 1
+# while i < 6:
+#     print(i)
+#     i += 1
+
+# exercise2
+
+# i = 1
+# while i < 6:
+#   if i == 3:
+#     break
+#   i += 1
+
+# exercise3
+
+# i = 0
+# while i < 6:
+#   i += 1
+#   if i == 3:
+#         continue
+#   print(i)
+
+# exercise4
+
+# i = 1
+# while i < 6:
+#   print(i)
+#   i += 1
+# else:
+#     print("i is no longer less than 6")
+
+
+
+
+# FOR loops
+
+# fruits = ["apple", "banana", "cherry"]
+# for x in fruits:
+#   print(x) 
+
+
+# looping through a string
+
+# for x in "banana":
+#       print(x) 
+
+# b
+# a
+# n
+# a
+# n
+# a
+
+
+# break
+
+# fruits = ["apple", "banana", "cherry"]
+# for x in fruits:
+#   print(x) 
+#   if x == "banana":
+#     break
+
+# apple
+# banana
+
+
+# example
+
+# fruits = ["apple", "banana", "cherry"]
+# for x in fruits:
+#   if x == "banana":
+#     break
+#   print(x) 
+
+# apple
+
+
+# continue
+
+# fruits = ["apple", "banana", "cherry"]
+# for x in fruits:
+#   if x == "banana":
+#     continue
+#   print(x) 
+
+# apple
+# Cherry
+
+
+# range
+
+# for x in range(6):
+#       print(x) 
+
+
+# for x in range(6):
+#   print(x) 
+
+# for x in range(6):
+#   print(x) 
+# ​
+# 0
+# 1
+# 2
+# 3
+# 4
+# 5
+
+# example
+
+# for x in range(2, 6):
+#       print(x)
+
+# 2
+# 3
+# 4
+# 5
+
+# example
+
+# for x in range(2, 30, 3):
+#       print(x) 
+
+# 2
+# 5
+# 8
+# 11
+# 14
+# 17
+# 20
+# 23
+# 26
+# 29
+
+# else
+
+# for x in range(6):
+#       print(x)
+# else:
+#   print("Finally finished!")
+
+# 0
+# 1
+# 2
+# 3
+# 4
+# 5
+# Finally finished!
+
+# example
+
+# for x in range(6):
+#       if x == 3: break
+#   print(x)
+# else:
+#   print("Finally finished!")
+
+# #If the loop breaks, the else block is not executed.
+
+
+# nested loops
+
+# adj = ["red", "big", "tasty"]
+# fruits = ["apple", "banana", "cherry"]
+
+# for x in adj:
+#   for y in fruits:
+#     print(x, y)
+
+# red apple
+# red banana
+# red cherry
+# big apple
+# big banana
+# big cherry
+# tasty apple
+# tasty banana
+# tasty cherry
+
+# pass
+
+# for x in [0, 1, 2]:
+#       pass
+
+# # having an empty for loop like this, would raise an error without the pass statement
+
+
+
+        
+
+
+
+
+
+# exercise1
+
+# fruits = ["apple", "banana", "cherry"]
+# for x in fruits:
+#    print(x)
+
+# exercise2
+
+# fruits = ["apple", "banana", "cherry"]
+# for x in fruits:
+#   if x == "banana":
+#     continue
+#   print(x)
+
+# exercise3
+
+# for x in range(6):
+#    print(x)
+
+# exercise4
+
+# fruits = ["apple", "banana", "cherry"]
+# for x in fruits:
+#   if x == "banana":
+#     break
+#   print(x)
