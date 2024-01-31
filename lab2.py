@@ -553,25 +553,85 @@ Decimal numbers and their binary values:
 # thislist.insert(2, "watermelon")
 # print(thislist)
 
-add item at the end of the list
-thislist = ["apple", "banana", "cherry"]
-thislist.append("orange")
-print(thislist)
+# add item at the end of the list
+# thislist = ["apple", "banana", "cherry"]
+# thislist.append("orange")
+# print(thislist)
 
-insert items at specified Index
-thislist = ["apple", "banana", "cherry"]
-thislist.insert(1, "orange")
-print(thislist)
+# insert items at specified Index
+# thislist = ["apple", "banana", "cherry"]
+# thislist.insert(1, "orange")
+# print(thislist)
 
-append elements from another list to the current list
-thislist = ["apple", "banana", "cherry"]
-tropical = ["mango", "pineapple", "papaya"]
-thislist.extend(tropical)
-print(thislist)
+# append elements from another list to the current list
+# thislist = ["apple", "banana", "cherry"]
+# tropical = ["mango", "pineapple", "papaya"]
+# thislist.extend(tropical)
+# print(thislist)
 
-add other iterable object
-thislist = ["apple", "banana", "cherry"]
-thistuple = ("kiwi", "orange")
-thislist.extend(thistuple)
-print(thislist)
+# add other iterable object
+# thislist = ["apple", "banana", "cherry"]
+# thistuple = ("kiwi", "orange")
+# thislist.extend(thistuple)
+# print(thislist)
+
+# remove
+# thislist = ["apple", "banana", "cherry"]
+# thislist.remove("banana")
+# print(thislist)
+
+# removes the first item
+# thislist = ["apple", "banana", "cherry", "banana", "kiwi"]
+# thislist.remove("banana")
+# print(thislist)
+
+# pop()
+# thislist = ["apple", "banana", "cherry"]
+# thislist.pop(1)
+# print(thislist)
+
+# pop() removes last item
+# thislist = ["apple", "banana", "cherry"]
+# thislist.pop()
+# print(thislist)
+
+# del removes Index
+# thislist = ["apple", "banana", "cherry"]
+# del thislist[0]
+# print(thislist)
+
+# del deletes the list completely
+# thislist = ["apple", "banana", "cherry"]
+# del thislist
+# print(thislist) error
+ 
+#  clear() empties the list (doesnt dissapear)
+# thislist = ["apple", "banana", "cherry"]
+# thislist.clear()
+# print(thislist)
+
+
+# loop lists
+
+# print all items
+# thislist = ["apple", "banana", "cherry"]
+# for x in thislist:
+#     print(x)
+
+# Through the Index Numbers
+# thislist = ["apple", "banana", "cherry"]
+# for i in range(len(thislist))
+#     print(thislist[i])
+
+# while loop
+# thislist = ["apple", "banana", "cherry"]
+# i = 0
+# while i < len(thislist):
+#   print(thislist[i])
+#   i = i + 1
+
+# Looping Using List Comprehension
+#   thislist = ["apple", "banana", "cherry"]
+# [print(x) for x in thislist]
+
 
