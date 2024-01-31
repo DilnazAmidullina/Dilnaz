@@ -377,18 +377,201 @@ Decimal numbers and their binary values:
 
 # operator precedence (order of operations)
 
-#example
+#parenthese
 # print((6 + 3) - (6 + 3))
 
-#example
-print(100 + 5 * 3)
+#multiplication, division, floor division, and modulus (higher precedence)
+# print(100 + 5 * 3)
+
+#addition and substraction
+# print(100 - 5 * 3)
+
+# Bitwise left and right shifts (lower precedence)
+# print(8 >> 4 - 2)
+
+# outputs 2
+
+# Bitwise AND (lower precedence)
+# print(6 & 2 + 1)
+
+# outputs 2
+
+# Bitwise XOR (lower precedence)
+# print(6 ^ 2 + 1)
+
+# outputs 5
+
+# Bitwise OR (lower precedence)
+# print(6 | 2 + 1)
+
+# outputs 7
+
+# comparisons, identity, and membership operators (lower precedence)
+# print(5 == 4 + 1)
+
+# outputs true 
+
+# logical NOT (lower precedence)
+# print(not 5 == 5)
+
+# outputs False
+
+
+# and (higher precedence)
+# print(1 or 2 and 3)
+
+# outputs 1
+
+# or (lower precedence)
+# print(4 or 5 + 10 or 8)
+
+# outputs 4
+
+
+#example (addition = substraction)
+# print(5 + 4 - 7 + 3)
+
+# outputs 5
+
+
+#exercise1
+# print(10*5)
+
+#exercise2
+# print(10/2)
+
+# exercise3
+# fruits = ["aqpple", "banana"]
+# if "apple" in fruits:
+#     print("Yes, apple is in fruit!")
+
+# exercise4
+# if 5 != 10:
+#     print("5 anf 10 are not equal")
+
+# exercise5
+# if 5 == 10 or 4 == 4:
+#     print("At least one of the statements is true")
 
 
 
 
+# Lists
+
+# example
+# thislist = ["apple", "banana", "cherry"]
+# print(thislist)
+
+# duplicates
+# thislist = ["apple", "banana", "cherry", "apple", "cherry"]
+# print(thislist)
+
+# length
+# thislist = ["apple", "banana", "cherry"]
+# print(len(thislist))
+
+# data types
+# list1 = ["apple", "banana", "cherry"]
+# list2 = [1, 5, 7, 9, 3]
+# list3 = [True, False, False]
+
+# print(list1)
+# print(list2)
+# print(list3)
+
+# different data types
+# list1 = ["abc", 34, True, 40, "male"]
+
+# print(list1)
+
+# type()
+# mylist = ["apple", "banana", "cherry"]
+
+# print(type(mylist))
+
+# outputs <class 'list'>
 
 
+# list()
+# thislist = list(("apple", "banana", "cherry")) # note the double round-brackets
+# print(thislist)
 
 
+# access list items
 
+# example
+# thislist = ["apple", "banana", "cherry"]
+# print(thislist[1])
+
+# negative indexing
+# thislist = ["apple", "banana", "cherry"]
+# print(thislist[-1])
+
+# range of indexes
+# thislist = ["apple", "banana", "cherry", "orange", "kiwi", "melon", "mango"]
+# print(thislist[2:5])
+
+# example
+# thislist = ["apple", "banana", "cherry", "orange", "kiwi", "melon", "mango"]
+# print(thislist[:4])
+
+# example
+# thislist = ["apple", "banana", "cherry", "orange", "kiwi", "melon", "mango"]
+# print(thislist[2:])
+
+# Range of Negative Indexes
+# thislist = ["apple", "banana", "cherry", "orange", "kiwi", "melon", "mango"]
+# print(thislist[-4:-1])
+
+# example
+# thislist = ["apple", "banana", "cherry"]
+# if "apple" in thislist:
+#   print("Yes, 'apple' is in the fruits list")
+
+# change item Value
+# thislist = ["apple", "banana", "cherry"]
+# thislist[1] = "blackcurrant"
+# print(thislist)
+
+# change a range of item Value
+# thislist = ["apple", "banana", "cherry", "orange", "kiwi", "mango"]
+# thislist[1:3] = ["blackcurrant", "watermelon"]
+# print(thislist)
+
+# insert new value 
+# thislist = ["apple", "banana", "cherry"]
+# thislist[1:2] = ["blackcurrant", "watermelon"]
+# print(thislist)
+
+# insert less items than replace
+# thislist = ["apple", "banana", "cherry"]
+# thislist[1:3] = ["watermelon"]
+# print(thislist)
+
+# insert() without replacing
+# thislist = ["apple", "banana", "cherry"]
+# thislist.insert(2, "watermelon")
+# print(thislist)
+
+add item at the end of the list
+thislist = ["apple", "banana", "cherry"]
+thislist.append("orange")
+print(thislist)
+
+insert items at specified Index
+thislist = ["apple", "banana", "cherry"]
+thislist.insert(1, "orange")
+print(thislist)
+
+append elements from another list to the current list
+thislist = ["apple", "banana", "cherry"]
+tropical = ["mango", "pineapple", "papaya"]
+thislist.extend(tropical)
+print(thislist)
+
+add other iterable object
+thislist = ["apple", "banana", "cherry"]
+thistuple = ("kiwi", "orange")
+thislist.extend(thistuple)
+print(thislist)
 
