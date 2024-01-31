@@ -635,3 +635,164 @@ Decimal numbers and their binary values:
 # [print(x) for x in thislist]
 
 
+# list Comprehension
+
+# example
+# fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+# newlist = []
+
+# for x in fruits:
+#   if "a" in x:
+#     newlist.append(x)
+
+# print(newlist)
+
+# example (short version)
+# fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+
+# newlist = [x for x in fruits if "a" in x]
+
+# print(newlist)
+
+# condition
+# fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+
+# newlist = [x for x in fruits if x != "apple"]
+
+# print(newlist)
+
+# example
+# fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+# newlist = [x for x in fruits]
+# print(newlist)
+
+# create an iterable
+
+# newlist = [x for x in range(10)]
+# print(newlist)
+
+# outputs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# with condition
+
+# newlist = [x for x in range(10) if x < 5]
+
+# print(newlist)
+# outputs  
+# [0, 1, 2, 3, 4]
+
+# expression (before for)
+
+# fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+# newlist = [x.upper() for x in fruits]
+# print(newlist)\
+# outputs ['APPLE', 'BANANA', 'CHERRY', 'KIWI', 'MANGO']
+
+
+# example
+
+# fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+# newlist = ['hello' for x in fruits]
+# print(newlist)
+# outputs ['hello', 'hello', 'hello', 'hello', 'hello']
+
+
+# expression with condition
+
+# fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+# newlist = [x if x != "banana" else "orange" for x in fruits]
+# print(newlist)
+# outputs ['apple', 'orange', 'cherry', 'kiwi', 'mango']
+
+
+# sort()
+
+# thislist = ["orange", "mango", "kiwi", "pineapple", "banana"]
+# thislist.sort()
+# print(thislist)
+# outputs ['banana', 'kiwi', 'mango', 'orange', 'pineapple']
+
+# sort numerically
+
+# thislist = [100, 50, 65, 82, 23]
+# thislist.sort()
+# print(thislist)
+
+# sort in descending order
+
+# thislist = ["orange", "mango", "kiwi", "pineapple", "banana"]
+# thislist.sort(reverse = True)
+# print(thislist)
+
+# example
+
+# thislist = [100, 50, 65, 82, 23]
+# thislist.sort(reverse = True)
+# print(thislist)
+
+# sorting by difference between numbers
+
+# def myfunc(n):
+#       return abs(n - 50)
+
+# thislist = [100, 50, 65, 82, 23]
+# thislist.sort(key = myfunc)
+# print(thislist)
+
+# case sensitive - sorting by capital letters (they will be first)
+
+# thislist = ["banana", "Orange", "Kiwi", "cherry"]
+# thislist.sort()
+# print(thislist)
+
+# case-insensitive (sorting by lower letters)
+# thislist = ["banana", "Orange", "Kiwi", "cherry"]
+# thislist.sort(key = str.lower)
+# print(thislist)
+
+# reverse regardless of a alphabet
+# thislist = ["banana", "Orange", "Kiwi", "cherry"]
+# thislist.reverse()
+# print(thislist)
+
+
+# copy
+
+# example
+
+# thislist = ["apple", "banana", "cherry"]
+# mylist = thislist.copy()
+# print(mylist)
+
+# 2nd method of copy
+
+# thislist = ["apple", "banana", "cherry"]
+# mylist = list(thislist)
+# print(mylist)
+
+
+join 
+
+example
+
+list1 = ["a", "b", "c"]
+list2 = [1, 2, 3]
+list3 = list1 + list2
+print(list3)
+
+2nd method with append (add to the end)
+
+list1 = ["a", "b" , "c"]
+list2 = [1, 2, 3]
+for x in list2:
+  list1.append(x)
+print(list1)
+
+3rd method with extend (add elements from one list to another list)
+
+list1 = ["a", "b" , "c"]
+list2 = [1, 2, 3]
+list1.extend(list2)
+print(list1)
+
+
