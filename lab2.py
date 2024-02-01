@@ -2418,11 +2418,6 @@ Decimal numbers and their binary values:
 
 
 
-        
-
-
-
-
 
 # exercise1
 
