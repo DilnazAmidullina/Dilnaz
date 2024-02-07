@@ -324,13 +324,140 @@
 # guess_the_number()
 
 
+# Create a python file and import some of the functions from the above 13 tasks and try to use them.
 
-from lab3function import isPalindrome
-print(isPalindrome("akka")) 
-
-
-
+# from lab3function import isPalindrome
+# print(isPalindrome) 
 
 
 
+# FUNCTION2
 
+# Dictionary of movies
+
+# movies = [
+# {
+# "name": "Usual Suspects", 
+# "imdb": 7.0,
+# "category": "Thriller"
+# },
+# {
+# "name": "Hitman",
+# "imdb": 6.3,
+# "category": "Action"
+# },
+# {
+# "name": "Dark Knight",
+# "imdb": 9.0,
+# "category": "Adventure"
+# },
+# {
+# "name": "The Help",
+# "imdb": 8.0,
+# "category": "Drama"
+# },
+# {
+# "name": "The Choice",
+# "imdb": 6.2,
+# "category": "Romance"
+# },
+# {
+# "name": "Colonia",
+# "imdb": 7.4,
+# "category": "Romance"
+# },
+# {
+# "name": "Love",
+# "imdb": 6.0,
+# "category": "Romance"
+# },
+# {
+# "name": "Bride Wars",
+# "imdb": 5.4,
+# "category": "Romance"
+# },
+# {
+# "name": "AlphaJet",
+# "imdb": 3.2,
+# "category": "War"
+# },
+# {
+# "name": "Ringing Crime",
+# "imdb": 4.0,
+# "category": "Crime"
+# },
+# {
+# "name": "Joking muck",
+# "imdb": 7.2,
+# "category": "Comedy"
+# },
+# {
+# "name": "What is the name",
+# "imdb": 9.2,
+# "category": "Suspense"
+# },
+# {
+# "name": "Detective",
+# "imdb": 7.0,
+# "category": "Suspense"
+# },
+# {
+# "name": "Exam",
+# "imdb": 4.2,
+# "category": "Thriller"
+# },
+# {
+# "name": "We Two",
+# "imdb": 7.2,
+# "category": "Romance"
+# }
+# ]
+
+
+# 1 Write a function that takes a single movie and returns True if its IMDB score is above 5.5
+
+# def imdb(movie):
+#     for i in movies:
+#         if i["name"] == movie:
+#             if i["imdb"] >= 5.5:
+#                 return True
+#     return False
+
+
+# 2 Write a function that returns a sublist of movies with an IMDB score above 5.5.
+
+# mylist = []
+# def checking():
+#     for i in movies:
+#         if i["imdb"] >= 5.5:
+#             mylist.append(i["name"])
+#     return mylist
+
+# 3 Write a function that takes a category name and returns just those movies under that category.
+
+# mylist = []
+# def checking(category_name):
+#     for i in movies:
+#         if(i["category"] == category_name):
+#             mylist.append(i["name"])
+#     return mylist
+
+
+# 4 Write a function that takes a list of movies and computes the average IMDB score.
+
+# def avgIMDB():
+#     sumOfIMDB = 0
+#     for i in movies:
+#         sumOfIMDB += i["imdb"]
+#     return sumOfIMDB / len(movies)
+
+# 5 Write a function that takes a category and computes the average IMDB score.
+
+# def checking(category_name):
+#     sumOfIMDB = 0
+#     cnt = 0
+#     for i in movies:
+#         if(i["category"] == category_name):
+#             cnt += 1
+#             sumOfIMDB += i["imdb"]
+#     return sumOfIMDB / cnt
