@@ -185,17 +185,6 @@
 # print(x)
 # outputs 6
 
-#number is shifted to the left
-# x = 5
-# x <<= 3
-# print(x)
-
-# number is shifted to the right
-# x = 5
-# x >>= 3
-# print(x)
-
-
 
 # comparison operators
 
@@ -441,13 +430,13 @@ Decimal numbers and their binary values:
 # print(10/2)
 
 # exercise3
-# fruits = ["aqpple", "banana"]
+# fruits = ["apple", "banana"]
 # if "apple" in fruits:
 #     print("Yes, apple is in fruit!")
 
 # exercise4
 # if 5 != 10:
-#     print("5 anf 10 are not equal")
+#     print("5 and 10 are not equal")
 
 # exercise5
 # if 5 == 10 or 4 == 4:
@@ -459,6 +448,7 @@ Decimal numbers and their binary values:
 # LISTS
 
 # example
+
 # thislist = ["apple", "banana", "cherry"]
 # print(thislist)
 
