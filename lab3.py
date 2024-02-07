@@ -325,7 +325,7 @@
 
 
 
-from 3labfunction import isPalindrome
+from lab3function import isPalindrome
 print(isPalindrome("akka")) 
 
 
