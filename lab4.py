@@ -153,23 +153,31 @@
 
 
 
-#JSON
+# JSON
 
 import json
 
-with open('sample-data.json') as f: # Load the JSON data from the file
-    data = json.load(f)
-
-print("Interface Status") # Print the header
-print("=" * 80)
-print("{:<50}{:<20}{:<8}{:<6}".format("DN", "Description", "Speed", "MTU"))
-print("-" * 80)
-
-for interface in data['interfaces']: # Print each interface entry
-    print("{:<50}{:<20}{:<8}{:<6}".format(interface['DN'], interface.get('Description', ''), interface.get('Speed', 'inherit'), interface.get('MTU', '')))
-
-
-
+with open('sample-data.json') as file:
+    json_data = json.load(file) 
+    print('''
+    Interface Status
+    ================================================================================
+    DN                                                 Description           Speed    MTU  
+    -------------------------------------------------- --------------------  ------  ------
+    ''')
+    imdata = json_data['imdata']
+    for item in imdata:
+        o_item = item['l1PhysIf']
+        attr = o_item['attributes']
+        dn = attr['dn']
+        speed = attr['speed']
+        mtu = attr['mtu']
+        out = ''
+        if len(dn) == 42:
+            out += dn + '                              ' + speed + '   ' + mtu
+        else:
+            out += dn + '                              ' + speed + '   ' + mtu
+            print(out)
 
 
 
