@@ -22,7 +22,7 @@ while not done:
 
     screen.fill((255, 255, 255))
     time = datetime.datetime.now()
-    time_render = font.render(time.strftime("%H:%M:%S"), True, pygame.Color('black'), pygame.Color('white'))
+    time_render = font.render(time.strftime("%H:%M:%S"), True, pygame.Color('blue'), pygame.Color('orange')) #true для глаживания текста
     screen.blit(image, mik_rec)
     screen.blit(time_render, (10, 10))
     
@@ -30,7 +30,7 @@ while not done:
     angle = (time.second / 60) * 360
     
     # Rotate the second hand image
-    rotated_image = pygame.transform.rotate(sec, -angle)
+    rotated_image = pygame.transform.rotate(sec, -angle) #минус это чтоб по часовой
     
     # Get the rect of the rotated image and center it
     rotated_rect = rotated_image.get_rect(center=mik_sec.center)

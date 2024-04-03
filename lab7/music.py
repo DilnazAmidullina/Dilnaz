@@ -3,11 +3,11 @@ from tkinter import *
 import pygame
 import os
 
-root=Tk()
-root.title('Music player')
+root=Tk() #initializes program
+root.title('Music player')  #root is the window
 root.geometry("500x300")
 
-pygame.mixer.init()
+pygame.mixer.init() #mixit allows to play audio
 
 menubar=Menu(root)
 root.config(menu=menubar)
@@ -69,7 +69,7 @@ def prev_music():
         pass
 
 songlist=Listbox(root, bg="green", fg="white", width=100, height=15)
-songlist.pack()
+songlist.pack() #adds to the root widget
 
 play_image=PhotoImage(file='play.png')
 pause_image=PhotoImage(file='pause.png')
@@ -89,5 +89,5 @@ pause_btn.grid(row=0, column=2, padx=7, pady=10)
 next_btn.grid(row=0, column=3, padx=7, pady=10)
 prev_btn.grid(row=0, column=0, padx=7, pady=10)
 
-root.mainloop()
+root.mainloop() #runs up program - opens window
 
