@@ -7,9 +7,9 @@ pygame.init()
 WINDOW_WIDTH = 800
 WINDOW_HEIGHT = 600
 CELL_SIZE = 20
-SNAKE_COLOR = (0, 255, 0)
-FOOD_COLOR = (255, 0, 0)
-BACKGROUND_COLOR = (0, 0, 0)
+SNAKE_COLOR = (255, 0, 0)
+FOOD_COLOR = (0, 255, 0)
+BACKGROUND_COLOR = (0, 0, 255)
 
 # Directions
 UP = (0, -1)
@@ -45,7 +45,7 @@ def check_collision():
         return True
     if snake[0] in snake[1:]:
         return True
-    return False
+    return False       
 
 def generate_food():
     while True:

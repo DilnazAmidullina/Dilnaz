@@ -20,7 +20,7 @@ COLORS = [BG_COLOR, BLACK, RED, GREEN, BLUE, YELLOW, CYAN, MAGENTA, GRAY]
 # Variables
 drawing = False
 last_pos = None
-radius = 10
+radius = 2
 color = BLACK
 bg_color = BG_COLOR
 
