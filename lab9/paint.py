@@ -17,7 +17,7 @@ commands = {
 def setsurf():
     surf.fill('black')
     buttons.fill('white')
-    pygame.draw.rect(buttons, 'black', (2, 2, 96, 206), 1)
+    pygame.draw.rect(buttons, 'black', (2, 2, 96, 206), 1) #координаты, размеры, граница с экраном
     pygame.draw.aaline(buttons, 'black', (8, 8), (40, 40), 1)
     pygame.draw.rect(buttons, 'black', (58, 10, 32, 32), 1)
     pygame.draw.circle(buttons, 'black', (27, 70), 15, 1)
@@ -25,7 +25,7 @@ def setsurf():
     sc.blit(surf, (0, 0))
     sc.blit(buttons, (700, 0))
 # функция для отрисовки линии
-def line(sc, start, end, d, color):
+def line(sc, start, end, d, color): #sc - surface, d - diameter
     x1 = start[0]
     y1 = start[1]
     x2 = end[0]
@@ -98,16 +98,16 @@ last_pos = (0, 0)
 w = 2
 draw_line = False
 erase = False
-ed = 50
+ed = 50 #diameter of eraser
 
-d = {
+d = { # This dictionary tracks the current drawing mode. Each key represents a drawing mode 
     'line' : True,
     'rect': False,
     'circle': False,
     'eraser': False
 }
 
-setsurf()
+setsurf() #setting the background color, drawing buttons or menus, or setting up the screen
 running = True
 while running:
     pos = pygame.mouse.get_pos()
@@ -115,7 +115,7 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         # меняем цвета при нажатии на клавиши  
-        if event.type == pygame.KEYDOWN:
+        if event.type == pygame.KEYDOWN: #This condition checks if a key has been pressed.
             if event.key == pygame.K_1:
                 cur_color = 'red'
             if event.key == pygame.K_2:
@@ -126,9 +126,9 @@ while running:
                 cur_color = 'white'  
         # при нажатии на область определенной кнопочки меняем значение соответственной команды на True в словаре комманд
         if event.type == pygame.MOUSEBUTTONDOWN:
-            for k, v in commands.items():
-                if v[0] <= pos[0]-700 <= v[0] + v[2] and v[1] <= pos[1] <= v[1] + v[3]:
-                    d[k] = True
+            for k, v in commands.items(): #key ключ, v - value
+                if v[0] <= pos[0]-700 <= v[0] + v[2] and v[1] <= pos[1] <= v[1] + v[3]: #v[0] v[1] - top-left corner of the area, v[2] v[3] - coordinates
+                    d[k] = True #activates all items in dictionary
                     for i, j in d.items():
                         if i != k:
                             d[i] = False
