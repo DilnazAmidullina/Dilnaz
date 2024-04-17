@@ -1,190 +1,101 @@
 import pygame
+import sys
+import math
 
 pygame.init()
-sc = pygame.display.set_mode((800, 600))
-surf = pygame.Surface((700, 600))
-buttons = pygame.Surface((100, 210)) # создаю панель кнопок
-font = pygame.font.SysFont("Verdana", 15)
-cur_color = 'white' # текущий цвет который могу менять
-# создаем словарь комманд
-commands = {
-    'line': [4, 4, 44, 44],
-    'rect': [52, 4, 44, 44],
-    'circle': [4,50, 44, 44],
-    'eraser': [52, 50, 44, 44]
-}
-# функция для установки панели с кнопочек
-def setsurf():
-    surf.fill('black')
-    buttons.fill('white')
-    pygame.draw.rect(buttons, 'black', (2, 2, 96, 206), 1) #координаты, размеры, граница с экраном
-    pygame.draw.aaline(buttons, 'black', (8, 8), (40, 40), 1)
-    pygame.draw.rect(buttons, 'black', (58, 10, 32, 32), 1)
-    pygame.draw.circle(buttons, 'black', (27, 70), 15, 1)
-    pygame.draw.rect(buttons, 'black', (56, 58, 36, 28))
-    sc.blit(surf, (0, 0))
-    sc.blit(buttons, (700, 0))
-# функция для отрисовки линии
-def line(sc, start, end, d, color): #sc - surface, d - diameter
-    x1 = start[0]
-    y1 = start[1]
-    x2 = end[0]
-    y2 = end[1]
 
-    dx = abs(x1 - x2)
-    dy = abs(y1 - y2)
+# Constants
+WINDOW_WIDTH = 800
+WINDOW_HEIGHT = 600
+BG_COLOR = (255, 255, 255)
+BLACK = (0, 0, 0)
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
+BLUE = (0, 0, 255)
+YELLOW = (255, 255, 0)
+CYAN = (0, 255, 255)
+MAGENTA = (255, 0, 255)
+GRAY = (128, 128, 128)
+COLORS = [BG_COLOR, BLACK, RED, GREEN, BLUE, YELLOW, CYAN, MAGENTA, GRAY]
 
-    A = y2 - y1
-    B = x1 - x2
-    C = x2 * y1 - x1 * y2
+# Variables
+drawing = False
+last_pos = None
+radius = 10
+color = BLACK
+bg_color = BG_COLOR
 
-    if dx > dy:
-        if x1 > x2:
-            x1, x2 = x2, x1
-            y1, y2 = y2, y1
+# Set up the display
+screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+pygame.display.set_caption("Paint")
+screen.fill(BG_COLOR)
 
-        for x in range(x1, x2):
-            y = (-C - A * x) / B
-            pygame.draw.circle(sc, color, (x, y), d)
-    else:   
-        if y1 > y2:
-            x1, x2 = x2, x1
-            y1, y2 = y2, y1
-        for y in range(y1, y2):
-            x = (-C - B * y) / A
-            pygame.draw.circle(sc, color, (x, y), d)
-# функция для отрисовки прямоугольника
-def rectangle(sc, start, end, d, color):
-    x1 = start[0]
-    y1 = start[1]
-    x2 = end[0]
-    y2 = end[1]
+# Draw shapes functions
+def draw_square(pos, side_length):
+    pygame.draw.rect(screen, color, (pos[0], pos[1], side_length, side_length))
 
-    width = abs(x1-x2)
-    height = abs(y1-y2)
+def draw_right_triangle(pos, base_length, height):
+    points = [(pos[0], pos[1]), (pos[0] + base_length, pos[1]), (pos[0] + base_length, pos[1] + height)]
+    pygame.draw.polygon(screen, color, points)
 
-    if x1 <= x2:
-        if y1 < y2:
-            pygame.draw.rect(sc, color, (x1, y1, width, height), d)
-        else:
-            pygame.draw.rect(sc, color, (x1, y2, width, height), d)
-    else:
-        if y1 < y2:
-            pygame.draw.rect(sc, color, (x2, y1, width, height), d)
-        else:
-            pygame.draw.rect(sc, color, (x2, y2, width, height), d)
-# функция для отрисовки круга
-def circle(sc, start, end, d, color):
-    x1 = start[0]
-    y1 = start[1]
-    x2 = end[0]
-    y2 = end[1]
+def draw_equilateral_triangle(pos, side_length):
+    height = side_length * math.sqrt(3) / 2
+    points = [(pos[0] + side_length / 2, pos[1]), (pos[0], pos[1] + height), (pos[0] + side_length, pos[1] + height)]
+    pygame.draw.polygon(screen, color, points)
 
-    width = abs(x1-x2)
-    height = abs(y1-y2)
+def draw_rhombus(pos, side_length, angle):
+    angle_rad = math.radians(angle)
+    half_diag_length = side_length / math.sqrt(2)
+    points = [
+        (pos[0] + side_length / 2, pos[1] - half_diag_length),
+        (pos[0] + side_length, pos[1]),
+        (pos[0] + side_length / 2, pos[1] + half_diag_length),
+        (pos[0], pos[1])
+    ]
+    rotated_points = []
+    for point in points:
+        dx = point[0] - (pos[0] + side_length / 2)
+        dy = point[1] - (pos[1])
+        rotated_x = dx * math.cos(angle_rad) - dy * math.sin(angle_rad) + (pos[0] + side_length / 2)
+        rotated_y = dx * math.sin(angle_rad) + dy * math.cos(angle_rad) + (pos[1])
+        rotated_points.append((rotated_x, rotated_y))
+    pygame.draw.polygon(screen, color, rotated_points)
 
-    if x1 <= x2:
-        if y1 < y2:
-            pygame.draw.ellipse(sc, color, (x1, y1, width, height), d)
-        else:
-            pygame.draw.ellipse(sc, color, (x1, y2, width, height), d)
-    else:
-        if y1 < y2:
-            pygame.draw.ellipse(sc, color, (x2, y1, width, height), d)
-        else:
-            pygame.draw.ellipse(sc, color, (x2, y2, width, height), d)
-
-last_pos = (0, 0)
-w = 2
-draw_line = False
-erase = False
-ed = 50 #diameter of eraser
-
-d = { # This dictionary tracks the current drawing mode. Each key represents a drawing mode 
-    'line' : True,
-    'rect': False,
-    'circle': False,
-    'eraser': False
-}
-
-setsurf() #setting the background color, drawing buttons or menus, or setting up the screen
-running = True
-while running:
-    pos = pygame.mouse.get_pos()
+# Main loop
+while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            running = False
-        # меняем цвета при нажатии на клавиши  
-        if event.type == pygame.KEYDOWN: #This condition checks if a key has been pressed.
-            if event.key == pygame.K_1:
-                cur_color = 'red'
-            if event.key == pygame.K_2:
-                cur_color = 'green'
-            if event.key == pygame.K_3:
-                cur_color = 'blue'
-            if event.key == pygame.K_4:
-                cur_color = 'white'  
-        # при нажатии на область определенной кнопочки меняем значение соответственной команды на True в словаре комманд
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            for k, v in commands.items(): #key ключ, v - value
-                if v[0] <= pos[0]-700 <= v[0] + v[2] and v[1] <= pos[1] <= v[1] + v[3]: #v[0] v[1] - top-left corner of the area, v[2] v[3] - coordinates
-                    d[k] = True #activates all items in dictionary
-                    for i, j in d.items():
-                        if i != k:
-                            d[i] = False
-                    break
-        # запускаем функции соответственных комманд  
-        if d['line'] == 1:
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                last_pos = pos
-                pygame.draw.circle(surf, cur_color, pos, w)
-                draw_line = True
-            if event.type == pygame.MOUSEBUTTONUP:
-                draw_line = False
-            if event.type == pygame.MOUSEMOTION:
-                if draw_line:
-                    line(surf, last_pos, pos, w, cur_color)
-                last_pos = pos
-        elif d['rect'] == 1:
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                last_pos = pos
-            if event.type == pygame.MOUSEBUTTONUP:
-                rectangle(surf, last_pos, pos, w, cur_color)
-        elif d['circle'] == 1:
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                last_pos = pos
-            if event.type == pygame.MOUSEBUTTONUP:
-                circle(surf, last_pos, pos, w, cur_color)
-        elif d['eraser'] == 1:
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                (x, y) = pos
-                pygame.draw.rect(surf, 'black', (x, y, ed, ed))
-                erase = True
-            if event.type == pygame.MOUSEMOTION:
-                if erase:
-                    pygame.draw.rect(surf, 'black', (pos[0], pos[1], ed, ed))
-            if event.type == pygame.MOUSEBUTTONUP:
-                erase = False
-    # выделяю красной рамкой выбранную комманду
-    for k, v in d.items():
-        if v == True:
-            pygame.draw.rect(buttons, 'red', commands[k], 1)
-        else:
-            pygame.draw.rect(buttons, 'black', commands[k], 1)
-    
-    sc.blit(buttons, (700, 0))
-    sc.blit(surf, (0, 0))
-    c = font.render('Press:', True, 'black')
-    buttons.blit(c, (5, 100))
-    r = font.render('1 - Red', True, 'black')
-    buttons.blit(r, (5, 120))
-    g = font.render('2 - Green', True, 'black')
-    buttons.blit(g, (5, 140))
-    b = font.render('3 - Blue', True, 'black')
-    buttons.blit(b, (5, 160))
-    y = font.render('4 - White', True, 'black')
-    buttons.blit(y, (5, 180))
+            pygame.quit()
+            sys.exit()
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            drawing = True
+            last_pos = event.pos
+        elif event.type == pygame.MOUSEBUTTONUP:
+            drawing = False
+        elif event.type == pygame.MOUSEMOTION:
+            if drawing:
+                if pygame.key.get_pressed()[pygame.K_LCTRL] or pygame.key.get_pressed()[pygame.K_RCTRL]:
+                    rect_width = 2 * radius
+                    pygame.draw.rect(screen, bg_color, (event.pos[0] - radius, event.pos[1] - radius, rect_width, rect_width))
+                else:
+                    pygame.draw.circle(screen, color, event.pos, radius)
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_r:
+                radius = 10
+            elif event.key == pygame.K_c:
+                color = COLORS[(COLORS.index(color) + 1) % len(COLORS)]
+            elif event.key == pygame.K_e:
+                color = bg_color
+            elif event.key == pygame.K_ESCAPE:
+                screen.fill(BG_COLOR)
+            elif event.key == pygame.K_s:  # Draw square
+                draw_square(pygame.mouse.get_pos(), 50)
+            elif event.key == pygame.K_t:  # Draw right triangle
+                draw_right_triangle(pygame.mouse.get_pos(), 50, 50)
+            elif event.key == pygame.K_u:  # Draw equilateral triangle
+                draw_equilateral_triangle(pygame.mouse.get_pos(), 50)
+            elif event.key == pygame.K_i:  # Draw rhombus
+                draw_rhombus(pygame.mouse.get_pos(), 50, 45)
 
-    pygame.display.update()
-pygame.quit()
-    
+    # Update the display
+    pygame.display.flip()
