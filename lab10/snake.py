@@ -1,11 +1,11 @@
 import pygame
 import random
-import sqlite3
+import psycopg2
 
 pygame.init()
 
 # Constants
-WINDOW_WIDTH = 800
+WINDOW_WIDTH = 1000
 WINDOW_HEIGHT = 600
 CELL_SIZE = 20
 SNAKE_COLOR = (0, 255, 0)
@@ -27,7 +27,7 @@ food_size = random.randint(1, 3) * CELL_SIZE  # Random size between 1 and 3 time
 food_timer = pygame.time.get_ticks() + DISAPPEAR_TIME  # Set the initial timer for food disappearance
 score = 0
 level = 1
-speed = 10
+speed = 1
 
 # Game window
 window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
@@ -37,16 +37,18 @@ pygame.display.set_caption('Snake Game')
 clock = pygame.time.Clock()
 
 # Database initialization
-conn = sqlite3.connect('snake_game.db')
+conn = psycopg2.connect(host="localhost", dbname="postgres", user="postgres",
+                       password="dilnaz", port="5433")
+cur=conn.cursor()
 cursor = conn.cursor()
 
 # Create tables if they don't exist
 cursor.execute('''CREATE TABLE IF NOT EXISTS users (
-                    id INTEGER PRIMARY KEY,
+                    id SERIAL PRIMARY KEY,
                     username TEXT UNIQUE
                 )''')
 cursor.execute('''CREATE TABLE IF NOT EXISTS user_scores (
-                    id INTEGER PRIMARY KEY,
+                    id SERIAL PRIMARY KEY,
                     user_id INTEGER,
                     level INTEGER,
                     score INTEGER,
@@ -55,22 +57,22 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS user_scores (
 conn.commit()
 
 # Functions
-def create_user(username):
-    cursor.execute('INSERT OR IGNORE INTO users (username) VALUES (?)', (username,))
+def create_user():
+    cursor.execute('INSERT INTO users (username) VALUES (%s) ON CONFLICT (username) DO NOTHING', (username,))
     conn.commit()
 
 def get_user_id(username):
-    cursor.execute('SELECT id FROM users WHERE username = ?', (username,))
+    cursor.execute('SELECT id FROM users WHERE username = %s', (username,))
     user_id = cursor.fetchone()
     return user_id[0] if user_id else None
 
 def get_user_level(user_id):
-    cursor.execute('SELECT level FROM user_scores WHERE user_id = ? ORDER BY id DESC LIMIT 1', (user_id,))
+    cursor.execute('SELECT level FROM user_scores WHERE user_id = %s ORDER BY id DESC LIMIT 1', (user_id,))
     user_level = cursor.fetchone()
     return user_level[0] if user_level else None
 
 def save_score(user_id, level, score):
-    cursor.execute('INSERT INTO user_scores (user_id, level, score) VALUES (?, ?, ?)', (user_id, level, score))
+    cursor.execute('INSERT INTO user_scores (user_id, level, score) VALUES (%s, %s, %s)', (user_id, level, score))
     conn.commit()
 
 def draw_snake():
@@ -96,8 +98,9 @@ def generate_food():
 
 # Main game loop
 running = True
+paused = False
 username = input("Enter your username: ")
-create_user(username)
+create_user()
 user_id = get_user_id(username)
 user_level = get_user_level(user_id)
 if user_level:
@@ -119,50 +122,55 @@ while running:
                 snake_direction = LEFT
             elif event.key == pygame.K_RIGHT and snake_direction != LEFT:
                 snake_direction = RIGHT
+            elif event.key == pygame.K_p:
+                paused = not paused  # Toggle pause
+            elif event.key == pygame.K_s:
+                save_score(user_id, level, score)  # Save the score
 
-    # Move the snake
-    new_head = (snake[0][0] + snake_direction[0], snake[0][1] + snake_direction[1])
-    snake = [new_head] + snake[:-1]
+    if not paused:
+        # Move the snake
+        new_head = (snake[0][0] + snake_direction[0], snake[0][1] + snake_direction[1])
+        snake = [new_head] + snake[:-1]
 
-    # Check for collisions
-    if check_collision():
-        running = False
+        # Check for collisions
+        if check_collision():
+            running = False
 
-    # Check if the snake eats food
-    if snake[0] == food:
-        snake.append(snake[-1])  # Grow the snake
-        score += 1
-        if score % 3 == 0:
-            level += 1
-            speed += 2
+        # Check if the snake eats food
+        if snake[0] == food:
+            snake.append(snake[-1])  # Grow the snake
+            score += 1
+            if score % 3 == 0:
+                level += 1
+                speed += 2
 
-        save_score(user_id, level, score)
+            save_score(user_id, level, score)
 
-        food = generate_food()
-        food_size = random.randint(1, 3) * CELL_SIZE  # Random size between 1 and 3 times the cell size
-        food_timer = pygame.time.get_ticks() + DISAPPEAR_TIME  # Reset the timer for food disappearance
+            food = generate_food()
+            food_size = random.randint(1, 3) * CELL_SIZE  # Random size between 1 and 3 times the cell size
+            food_timer = pygame.time.get_ticks() + DISAPPEAR_TIME  # Reset the timer for food disappearance
 
-    # Check if the food should disappear and reappear
-    if pygame.time.get_ticks() > food_timer:
-        food = generate_food()
-        food_size = random.randint(1, 3) * CELL_SIZE  # Random size between 1 and 3 times the cell size
-        food_timer = pygame.time.get_ticks() + DISAPPEAR_TIME  # Reset the timer for food disappearance
+        # Draw everything
+        window.fill(BACKGROUND_COLOR)
+        draw_snake()
+        draw_food()
 
-    # Draw everything
-    window.fill(BACKGROUND_COLOR)
-    draw_snake()
-    draw_food()
+        # Display score and level
+        font = pygame.font.SysFont(None, 30)
+        score_text = font.render(f"Score: {score}", True, (255, 255, 255))
+        level_text = font.render(f"Level: {level}", True, (255, 255, 255))
+        window.blit(score_text, (10, 10))
+        window.blit(level_text, (10, 40))
 
-    # Display score and level
-    font = pygame.font.SysFont(None, 30)
-    score_text = font.render(f"Score: {score}", True, (255, 255, 255))
-    level_text = font.render(f"Level: {level}", True, (255, 255, 255))
-    window.blit(score_text, (10, 10))
-    window.blit(level_text, (10, 40))
+        pygame.display.update()
 
-    pygame.display.update()
-
-    # Control game speed
-    clock.tick(speed)
+        # Control game speed
+        clock.tick(speed)
+    else:
+        # Display pause message
+        font = pygame.font.SysFont(None, 50)
+        pause_text = font.render("PAUSED", True, (255, 255, 255))
+        window.blit(pause_text, (WINDOW_WIDTH // 2 - 50, WINDOW_HEIGHT // 2 - 25))
+        pygame.display.update()
 
 pygame.quit()
