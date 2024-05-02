@@ -8,10 +8,10 @@ pygame.init()
 WINDOW_WIDTH = 1000
 WINDOW_HEIGHT = 600
 CELL_SIZE = 20
-SNAKE_COLOR = (0, 255, 0)
-FOOD_COLOR = (255, 0, 0)
-BACKGROUND_COLOR = (0, 0, 0)
-DISAPPEAR_TIME = random.randint(1000, 2000)  # Random time between 1 and 2 seconds in milliseconds
+SNAKE_COLOR = (255, 255, 0)
+FOOD_COLOR = (255, 0, 255)
+BACKGROUND_COLOR = (0, 255, 0)
+DISAPPEAR_TIME = random.randint(1000, 10000)  # Random time 
 
 # Directions
 UP = (0, -1)
@@ -20,14 +20,14 @@ LEFT = (-1, 0)
 RIGHT = (1, 0)
 
 # Game variables
-snake = [(10, 10)]
+snake = [(8, 8)]
 snake_direction = RIGHT
-food = (5, 5)
-food_size = random.randint(1, 3) * CELL_SIZE  # Random size between 1 and 3 times the cell size
+food = (2, 2)
+food_size = random.randint(1, 2) * CELL_SIZE  # Random size between 1 and 3 times the cell size
 food_timer = pygame.time.get_ticks() + DISAPPEAR_TIME  # Set the initial timer for food disappearance
 score = 0
 level = 1
-speed = 1
+speed = 2
 
 # Game window
 window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
@@ -147,7 +147,7 @@ while running:
             save_score(user_id, level, score)
 
             food = generate_food()
-            food_size = random.randint(1, 3) * CELL_SIZE  # Random size between 1 and 3 times the cell size
+            food_size = random.randint(1, 2) * CELL_SIZE  # Random size between 1 and 3 times the cell size
             food_timer = pygame.time.get_ticks() + DISAPPEAR_TIME  # Reset the timer for food disappearance
 
         # Draw everything
@@ -169,7 +169,7 @@ while running:
     else:
         # Display pause message
         font = pygame.font.SysFont(None, 50)
-        pause_text = font.render("PAUSED", True, (255, 255, 255))
+        pause_text = font.render("STOP", True, (255, 255, 255))
         window.blit(pause_text, (WINDOW_WIDTH // 2 - 50, WINDOW_HEIGHT // 2 - 25))
         pygame.display.update()
 
